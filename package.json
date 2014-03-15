@@ -1,0 +1,47 @@
+{
+  "name": "pngout-bin",
+  "version": "0.1.0",
+  "description": "PNGOUT wrapper that optimize the size of .PNG files losslessly.",
+  "keywords": [
+    "png",
+    "compress",
+    "minify",
+    "optimize",
+    "img",
+    "image"
+  ],
+  "author": {
+    "name": "1000ch",
+    "email": "shogo.sensui@gmail.com",
+    "url": "http://1000ch.net"
+  },
+  "main": "lib/pngout",
+  "bin": {
+    "pngout": "bin/pngout.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/1000ch/node-pngout-bin.git"
+  },
+  "scripts": {
+    "test": "mocha ./test/test-build.js ./test/test-path.js",
+    "postinstall": "node ./lib/build.js"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "licenses": [{
+    "type": "BSD"
+  }],
+  "dependencies": {
+    "bin-wrapper": "~0.1.9",
+    "chalk": "~0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.1"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ]
+}
