@@ -6,12 +6,10 @@
 
 > PNGOUT optimizes the size of .PNG files losslessly. It uses the same deflate compressor I wrote for KZIP.EXE (see below). With the right options, it can often beat other programs by 5-10%.
 
-[![Build Status](https://travis-ci.org/1000ch/node-pngout-bin.png?branch=master)](https://travis-ci.org/1000ch/node-pngout-bin)
-[![NPM version](https://badge.fury.io/js/pngout-bin.png)](http://badge.fury.io/js/pngout-bin)
-[![Dependency Status](https://david-dm.org/1000ch/node-pngout-bin.png)](https://david-dm.org/1000ch/node-pngout-bin)
-[![devDependency Status](https://david-dm.org/1000ch/node-pngout-bin/dev-status.png)](https://david-dm.org/1000ch/node-pngout-bin#info=devDependencies)
-
-[![NPM](https://nodei.co/npm/pngout-bin.png)](https://nodei.co/npm/pngout-bin/)
+[![Build Status](https://travis-ci.org/1000ch/node-pngout-bin.svg?branch=master)](https://travis-ci.org/1000ch/node-pngout-bin)
+[![NPM version](https://badge.fury.io/js/pngout-bin.svg)](http://badge.fury.io/js/pngout-bin)
+[![Dependency Status](https://david-dm.org/1000ch/node-pngout-bin.svg)](https://david-dm.org/1000ch/node-pngout-bin)
+[![devDependency Status](https://david-dm.org/1000ch/node-pngout-bin/dev-status.svg)](https://david-dm.org/1000ch/node-pngout-bin#info=devDependencies)
 
 ## Install
 
