@@ -12,7 +12,7 @@ describe('pngout.build()', function () {
     var bin = new Bin(options);
 
     bin.path = path.join(__dirname, '../vendor', bin.bin);
-    bin.buildScript = 'mv ./pngout ' + path.join(__dirname, '../vendor');
+    bin.buildScript = 'mv ./pngout ' + path.join(__dirname, '../vendor/pngout');
 
     bin.build(function () {
       var origCTime = fs.statSync(bin.path).ctime;
