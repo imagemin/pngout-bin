@@ -8,7 +8,7 @@ var fs = require('fs');
 var path = require('path');
 var rm = require('rimraf');
 
-describe('advpng()', function () {
+describe('pngout()', function () {
   afterEach(function (cb) {
     rm(path.join(__dirname, 'tmp'), cb);
   });
