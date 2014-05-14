@@ -1,6 +1,6 @@
 {
   "name": "pngout-bin",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "PNGOUT wrapper that optimize the size of .PNG files losslessly.",
   "keywords": [
     "png",
@@ -14,6 +14,11 @@
     "name": "1000ch",
     "email": "shogo.sensui@gmail.com",
     "url": "http://1000ch.net"
+  },
+  "maintainer": {
+    "name": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "https://github.com/kevva"
   },
   "bin": {
     "pngout": "cli.js"
