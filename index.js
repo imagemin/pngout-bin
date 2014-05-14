@@ -11,9 +11,11 @@ var path = require('path');
 
 var bin = new BinWrapper()
   .src('https://raw.github.com/1000ch/node-pngout-bin/master/vendor/osx/pngout', 'darwin')
-  .src('https://raw.github.com/1000ch/node-pngout-bin/master/vendor/linux/pngout', 'linux')
+  .src('https://raw.github.com/1000ch/node-pngout-bin/master/vendor/linux/x86/pngout', 'linux', 'x86')
+  .src('https://raw.github.com/1000ch/node-pngout-bin/master/vendor/linux/x64/pngout', 'linux', 'x64')
   .src('https://raw.github.com/1000ch/node-pngout-bin/master/vendor/freebsd/x86/pngout', 'freebsd', 'x86')
   .src('https://raw.github.com/1000ch/node-pngout-bin/master/vendor/freebsd/x64/pngout', 'freebsd', 'x64')
+  .src('https://raw.github.com/1000ch/node-pngout-bin/master/vendor/win32/pngout.exe', 'win32')
   .dest(path.join(__dirname, 'vendor'))
   .use(process.platform === 'win32' ? 'pngout.exe' : 'pngout');
 
