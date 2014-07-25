@@ -21,9 +21,9 @@ $ npm install --save pngout-bin
 var execFile = require('child_process').execFile;
 var pngout = require('pngout-bin').path;
 
-execFile(pngout, ['input.png', 'output.png', '-s0', '-k0', '-f0'], function (err) {
-  if (err) {
-    throw err;
+execFile(pngout, ['input.png', 'output.png', '-s0', '-k0', '-f0'], function (error) {
+  if (error) {
+    throw error;
   }
 
   console.log('Image minified');

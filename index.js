@@ -30,8 +30,8 @@ fs.exists(bin.use(), function (exists) {
       path.join(__dirname, 'test/fixtures/test-optimized.png')
     ];
 
-    bin.run(args, function (err) {
-      if (err) {
+    bin.run(args, function (error) {
+      if (error) {
         return console.log(chalk.red('✗ pre-build test failed'));
       }
 
