@@ -26,7 +26,9 @@ describe('pngout()', function () {
     ];
 
     binCheck(binPath, args, function (err, works) {
-      cb(assert.equal(works, true));
+      assert(!err);
+      assert.equal(works, true);
+      cb();
     });
   });
 
@@ -38,11 +40,13 @@ describe('pngout()', function () {
       '-s0'
     ];
 
-    execFile(binPath, args, function () {
+    execFile(binPath, args, function (err) {
       var src = fs.statSync(path.join(__dirname, 'fixtures/test.png')).size;
       var dest = fs.statSync(path.join(__dirname, 'tmp/test.png')).size;
 
-      cb(assert(dest < src));
+      assert(!err);
+      assert(dest < src);
+      cb();
     });
   });
 });
