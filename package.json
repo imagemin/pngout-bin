@@ -1,6 +1,6 @@
 {
   "name": "pngout-bin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "PNGOUT wrapper that optimize the size of .PNG files losslessly.",
   "keywords": [
     "png",
