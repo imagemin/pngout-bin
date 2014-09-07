@@ -1,52 +1,64 @@
-/*global afterEach, beforeEach, describe, it */
 'use strict';
 
-var assert = require('assert');
 var binCheck = require('bin-check');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
+var mkdir = require('mkdirp');
 var path = require('path');
 var rm = require('rimraf');
+var test = require('ava');
+var tmp = path.join(__dirname, 'tmp');
 
-describe('pngout()', function () {
-	afterEach(function (cb) {
-		rm(path.join(__dirname, 'tmp'), cb);
-	});
+test('minify a PNG', function (t) {
+	t.plan(6);
 
-	beforeEach(function () {
-		fs.mkdirSync(path.join(__dirname, 'tmp'));
-	});
+	var args = [
+		path.join(__dirname, 'fixtures/test.png'),
+		path.join(__dirname, 'tmp/test.png'),
+		'-s0'
+	];
 
-	it('should return path to binary and verify that it is working', function (cb) {
-		var binPath = require('../').path;
-		var args = [
-			path.join(__dirname, 'fixtures/test.png'),
-			path.join(__dirname, 'tmp/test.png'),
-			'-s0'
-		];
+	mkdir(tmp, function (err) {
+		t.assert(!err);
 
-		binCheck(binPath, args, function (err, works) {
-			assert(!err);
-			assert.equal(works, true);
-			cb();
+		execFile(require('../').path, args, function (err) {
+			t.assert(!err);
+
+			fs.stat(path.join(__dirname, 'fixtures/test.png'), function (err, a) {
+				t.assert(!err);
+
+				fs.stat(path.join(tmp, 'test.png'), function (err, b) {
+					t.assert(!err);
+					t.assert(b.size < a.size);
+
+					rm(tmp, function (err) {
+						t.assert(!err);
+					});
+				});
+			});
 		});
 	});
+});
 
-	it('should minify a PNG', function (cb) {
-		var binPath = require('../').path;
-		var args = [
-			path.join(__dirname, 'fixtures/test.png'),
-			path.join(__dirname, 'tmp/test.png'),
-			'-s0'
-		];
+test('return path to binary and verify that it is working', function (t) {
+	t.plan(4);
 
-		execFile(binPath, args, function (err) {
-			var src = fs.statSync(path.join(__dirname, 'fixtures/test.png')).size;
-			var dest = fs.statSync(path.join(__dirname, 'tmp/test.png')).size;
+	var args = [
+		path.join(__dirname, 'fixtures/test.png'),
+		path.join(__dirname, 'tmp/test.png'),
+		'-s0'
+	];
 
-			assert(!err);
-			assert(dest < src);
-			cb();
+	mkdir(tmp, function (err) {
+		t.assert(!err);
+
+		binCheck(require('../').path, args, function (err, works) {
+			t.assert(!err);
+			t.assert(works);
+
+			rm(tmp, function (err) {
+				t.assert(!err);
+			});
 		});
 	});
 });

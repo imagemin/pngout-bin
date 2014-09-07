@@ -17,7 +17,7 @@
   },
   "scripts": {
     "postinstall": "node lib/install.js",
-    "test": "mocha --reporter spec --timeout 50000"
+    "test": "node test/test.js"
   },
   "files": [
     "cli.js",
@@ -34,12 +34,13 @@
     "png"
   ],
   "dependencies": {
-    "bin-wrapper": "^0.4.0",
-    "log-symbols": "^1.0.0"
+    "bin-wrapper": "^1.0.1",
+    "log-symbols": "^1.0.0",
+    "mkdirp": "^0.5.0",
+    "rimraf": "^2.2.6"
   },
   "devDependencies": {
-    "bin-check": "^0.2.0",
-    "mocha": "^1.18.2",
-    "rimraf": "^2.2.6"
+    "ava": "^0.0.4",
+    "bin-check": "^1.0.0"
   }
 }
