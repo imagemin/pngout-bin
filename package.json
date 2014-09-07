@@ -1,40 +1,38 @@
 {
   "name": "pngout-bin",
   "version": "0.1.5",
-  "description": "PNGOUT wrapper that optimize the size of .PNG files losslessly.",
-  "keywords": [
-    "png",
-    "compress",
-    "minify",
-    "optimize",
-    "img",
-    "image"
-  ],
+  "description": "pngout wrapper that makes it seamlessly available as a local dependency",
+  "license": "MIT",
+  "repository": "imagemin/pngout-bin",
   "author": {
     "name": "1000ch",
     "email": "shogo.sensui@gmail.com",
-    "url": "http://1000ch.net"
-  },
-  "maintainer": {
-    "name": "Kevin Mårtensson",
-    "email": "kevinmartensson@gmail.com",
-    "url": "https://github.com/kevva"
-  },
-  "bin": {
-    "pngout": "cli.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/1000ch/node-pngout-bin.git"
-  },
-  "scripts": {
-    "test": "mocha --reporter spec --timeout 50000",
-    "postinstall": "node lib/install.js"
+    "url": "http://github.com/1000ch"
   },
   "engines": {
     "node": ">=0.10.0"
   },
-  "license": "BSD",
+  "bin": {
+    "pngout": "cli.js"
+  },
+  "scripts": {
+    "postinstall": "node lib/install.js",
+    "test": "mocha --reporter spec --timeout 50000"
+  },
+  "files": [
+    "cli.js",
+    "index.js",
+    "lib",
+    "test"
+  ],
+  "keywords": [
+    "compress",
+    "image",
+    "img",
+    "minify",
+    "optimize",
+    "png"
+  ],
   "dependencies": {
     "bin-wrapper": "^0.4.0",
     "log-symbols": "^1.0.0"
@@ -43,11 +41,5 @@
     "bin-check": "^0.2.0",
     "mocha": "^1.18.2",
     "rimraf": "^2.2.6"
-  },
-  "files": [
-    "cli.js",
-    "index.js",
-    "lib",
-    "test"
-  ]
+  }
 }
