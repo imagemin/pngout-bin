@@ -40,7 +40,6 @@
     "rimraf": "^2.2.6"
   },
   "devDependencies": {
-    "ava": "^0.0.4",
-    "bin-check": "^1.0.0"
+    "ava": "^0.0.4"
   }
 }

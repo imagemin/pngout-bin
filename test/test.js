@@ -1,6 +1,5 @@
 'use strict';
 
-var binCheck = require('bin-check');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
 var mkdir = require('mkdirp');
@@ -14,8 +13,9 @@ test('minify a PNG', function (t) {
 
 	var args = [
 		path.join(__dirname, 'fixtures/test.png'),
-		path.join(__dirname, 'tmp/test.png'),
-		'-s0'
+		path.join(tmp, 'test.png'),
+		'-s0',
+		'-y'
 	];
 
 	mkdir(tmp, function (err) {
@@ -35,29 +35,6 @@ test('minify a PNG', function (t) {
 						t.assert(!err);
 					});
 				});
-			});
-		});
-	});
-});
-
-test('return path to binary and verify that it is working', function (t) {
-	t.plan(4);
-
-	var args = [
-		path.join(__dirname, 'fixtures/test.png'),
-		path.join(__dirname, 'tmp/test.png'),
-		'-s0'
-	];
-
-	mkdir(tmp, function (err) {
-		t.assert(!err);
-
-		binCheck(require('../').path, args, function (err, works) {
-			t.assert(!err);
-			t.assert(works);
-
-			rm(tmp, function (err) {
-				t.assert(!err);
 			});
 		});
 	});
