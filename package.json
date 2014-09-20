@@ -23,7 +23,7 @@
     "cli.js",
     "index.js",
     "lib",
-    "test"
+    "test/fixtures"
   ],
   "keywords": [
     "compress",
