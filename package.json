@@ -1,6 +1,6 @@
 {
   "name": "pngout-bin",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "pngout wrapper that makes it seamlessly available as a local dependency",
   "license": "MIT",
   "repository": "imagemin/pngout-bin",
@@ -40,6 +40,7 @@
     "rimraf": "^2.2.6"
   },
   "devDependencies": {
-    "ava": "^0.0.4"
+    "ava": "^0.0.4",
+    "buffer-equal": "0.0.1"
   }
 }
