@@ -14,7 +14,8 @@ test('minify a PNG', function (t) {
 	var args = [
 		path.join(__dirname, 'fixtures/test.png'),
 		path.join(tmp, 'test.png'),
-		'-s0',
+		'-s4',
+		'-c6',
 		'-y'
 	];
 
