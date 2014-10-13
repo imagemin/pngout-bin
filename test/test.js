@@ -1,17 +1,19 @@
 'use strict';
 
+var compareSize = require('compare-size');
 var execFile = require('child_process').execFile;
-var fs = require('fs');
 var path = require('path');
 var test = require('ava');
 var tmp = path.join(__dirname, 'tmp');
 
 test('minify a PNG', function (t) {
-	t.plan(4);
+	t.plan(3);
 
+	var src = path.join(__dirname, 'fixtures/test.png');
+	var dest = path.join(tmp, 'test.png');
 	var args = [
-		path.join(__dirname, 'fixtures/test.png'),
-		path.join(tmp, 'test.png'),
+		src,
+		dest,
 		'-s4',
 		'-c6',
 		'-y'
@@ -20,13 +22,9 @@ test('minify a PNG', function (t) {
 	execFile(require('../').path, args, function (err) {
 		t.assert(!err);
 
-		fs.stat(path.join(__dirname, 'fixtures/test.png'), function (err, a) {
+		compareSize(src, dest, function (err, res) {
 			t.assert(!err);
-
-			fs.stat(path.join(tmp, 'test.png'), function (err, b) {
-				t.assert(!err);
-				t.assert(b.size < a.size);
-			});
+			t.assert(res[dest] < res[src]);
 		});
 	});
 });
