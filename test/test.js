@@ -20,10 +20,10 @@ test('minify a PNG', function (t) {
 	];
 
 	execFile(require('../').path, args, function (err) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		compareSize(src, dest, function (err, res) {
-			t.assert(!err);
+			t.assert(!err, err);
 			t.assert(res[dest] < res[src]);
 		});
 	});
