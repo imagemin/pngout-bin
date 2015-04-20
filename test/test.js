@@ -1,14 +1,23 @@
+/*global afterEach,beforeEach,it*/
 'use strict';
 
+var assert = require('assert');
 var execFile = require('child_process').execFile;
 var path = require('path');
 var compareSize = require('compare-size');
-var test = require('ava');
+var mkdirp = require('mkdirp');
+var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
 
-test('minify a PNG', function (t) {
-	t.plan(3);
+beforeEach(function () {
+	mkdirp.sync(tmp);
+});
 
+afterEach(function () {
+	rimraf.sync(tmp);
+});
+
+it('minify a PNG', function (cb) {
 	var src = path.join(__dirname, 'fixtures/test.png');
 	var dest = path.join(tmp, 'test.png');
 	var args = [
@@ -20,11 +29,12 @@ test('minify a PNG', function (t) {
 	];
 
 	execFile(require('../').path, args, function (err) {
-		t.assert(!err, err);
+		assert(!err);
 
 		compareSize(src, dest, function (err, res) {
-			t.assert(!err, err);
-			t.assert(res[dest] < res[src]);
+			assert(!err);
+			assert(res[dest] < res[src]);
+			cb();
 		});
 	});
 });
