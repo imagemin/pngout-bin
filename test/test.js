@@ -1,8 +1,8 @@
 'use strict';
 
-var compareSize = require('compare-size');
 var execFile = require('child_process').execFile;
 var path = require('path');
+var compareSize = require('compare-size');
 var test = require('ava');
 var tmp = path.join(__dirname, 'tmp');
 
