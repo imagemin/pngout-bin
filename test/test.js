@@ -28,7 +28,7 @@ it('minify a PNG', function (cb) {
 		'-y'
 	];
 
-	execFile(require('../').path, args, function (err) {
+	execFile(require('../'), args, function (err) {
 		assert(!err);
 
 		compareSize(src, dest, function (err, res) {
