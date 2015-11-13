@@ -1,4 +1,4 @@
-/*global afterEach,beforeEach,it*/
+/* eslint-env mocha */
 'use strict';
 
 var assert = require('assert');
@@ -9,12 +9,12 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
 
-beforeEach(function () {
-	mkdirp.sync(tmp);
+beforeEach(function (cb) {
+	mkdirp(tmp, cb);
 });
 
-afterEach(function () {
-	rimraf.sync(tmp);
+afterEach(function (cb) {
+	rimraf(tmp, cb);
 });
 
 it('minify a PNG', function (cb) {
@@ -29,10 +29,17 @@ it('minify a PNG', function (cb) {
 	];
 
 	execFile(require('../'), args, function (err) {
-		assert(!err);
+		if (err) {
+			cb(err);
+			return;
+		}
 
 		compareSize(src, dest, function (err, res) {
-			assert(!err);
+			if (err) {
+				cb(err);
+				return;
+			}
+
 			assert(res[dest] < res[src]);
 			cb();
 		});
