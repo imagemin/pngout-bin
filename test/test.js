@@ -1,26 +1,16 @@
-/* eslint-env mocha */
 'use strict';
+const path = require('path');
+const test = require('ava');
+const execa = require('execa');
+const tempy = require('tempy');
+const compareSize = require('compare-size');
+const pngout = require('..');
 
-var assert = require('assert');
-var execFile = require('child_process').execFile;
-var path = require('path');
-var compareSize = require('compare-size');
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
-var tmp = path.join(__dirname, 'tmp');
-
-beforeEach(function (cb) {
-	mkdirp(tmp, cb);
-});
-
-afterEach(function (cb) {
-	rimraf(tmp, cb);
-});
-
-it('minify a PNG', function (cb) {
-	var src = path.join(__dirname, 'fixtures/test.png');
-	var dest = path.join(tmp, 'test.png');
-	var args = [
+test('minify a PNG', async t => {
+	const tmp = tempy.directory();
+	const src = path.join(__dirname, 'fixtures/test.png');
+	const dest = path.join(tmp, 'test.png');
+	const args = [
 		src,
 		dest,
 		'-s4',
@@ -28,20 +18,8 @@ it('minify a PNG', function (cb) {
 		'-y'
 	];
 
-	execFile(require('../'), args, function (err) {
-		if (err) {
-			cb(err);
-			return;
-		}
+	await execa(pngout, args);
+	const res = await compareSize(src, dest);
 
-		compareSize(src, dest, function (err, res) {
-			if (err) {
-				cb(err);
-				return;
-			}
-
-			assert(res[dest] < res[src]);
-			cb();
-		});
-	});
+	t.true(res[dest] < res[src]);
 });
