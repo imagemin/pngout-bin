@@ -29,7 +29,7 @@
     "pngout": "cli.js"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
     "postinstall": "node lib/install.js",
@@ -52,14 +52,14 @@
     "pngout"
   ],
   "dependencies": {
-    "bin-wrapper": "^3.0.0",
+    "bin-wrapper": "^4.0.0",
     "logalot": "^2.0.0"
   },
   "devDependencies": {
     "ava": "*",
     "compare-size": "^3.0.0",
-    "execa": "^0.6.3",
-    "tempy": "^0.1.0",
+    "execa": "^1.0.0",
+    "tempy": "^0.2.1",
     "xo": "*"
   }
 }
