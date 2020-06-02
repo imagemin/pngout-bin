@@ -7,9 +7,9 @@ const compareSize = require('compare-size');
 const pngout = require('..');
 
 test('minify a PNG', async t => {
-	const tmp = tempy.directory();
+	const temporary = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.png');
-	const dest = path.join(tmp, 'test.png');
+	const dest = path.join(temporary, 'test.png');
 	const args = [
 		src,
 		dest,
@@ -19,7 +19,7 @@ test('minify a PNG', async t => {
 	];
 
 	await execa(pngout, args);
-	const res = await compareSize(src, dest);
+	const result = await compareSize(src, dest);
 
-	t.true(res[dest] < res[src]);
+	t.true(result[dest] < result[src]);
 });
