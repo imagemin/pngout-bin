@@ -1,4 +1,4 @@
-# pngout-bin [![Build Status](http://img.shields.io/travis/imagemin/pngout-bin.svg?style=flat)](https://travis-ci.org/imagemin/pngout-bin)
+# pngout-bin ![GitHub Actions Status](https://github.com/imagemin/pngout-bin/workflows/test/badge.svg?branch=master)
 
 > [pngout](http://advsys.net/ken/util/pngout.htm) optimizes the size of PNG files losslessly
 
