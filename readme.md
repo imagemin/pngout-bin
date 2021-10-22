@@ -1,4 +1,4 @@
-# pngout-bin ![GitHub Actions Status](https://github.com/imagemin/pngout-bin/workflows/test/badge.svg?branch=master)
+# pngout-bin ![GitHub Actions Status](https://github.com/imagemin/pngout-bin/workflows/test/badge.svg?branch=main)
 
 > [pngout](http://advsys.net/ken/util/pngout.htm) optimizes the size of PNG files losslessly
 
@@ -15,10 +15,10 @@ $ npm install --save pngout-bin
 ## Usage
 
 ```js
-const {execFile} = require('child_process');
-const pngout = require('pngout-bin');
+import {execFile} from 'node:child_process';
+import pngout from 'pngout-bin';
 
-execFile(pngout, ['input.png', 'output.png', '-s0', '-k0', '-f0'], err => {
+execFile(pngout, ['input.png', 'output.png', '-s0', '-k0', '-f0'], error => {
 	console.log('Image minified!');
 });
 ```

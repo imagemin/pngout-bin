@@ -1,21 +1,21 @@
-'use strict';
-const path = require('path');
-const test = require('ava');
-const execa = require('execa');
-const tempy = require('tempy');
-const compareSize = require('compare-size');
-const pngout = require('..');
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import test from 'ava';
+import execa from 'execa';
+import tempy from 'tempy';
+import compareSize from 'compare-size';
+import pngout from '../index.js';
 
 test('minify a PNG', async t => {
 	const temporary = tempy.directory();
-	const src = path.join(__dirname, 'fixtures/test.png');
+	const src = fileURLToPath(new URL('fixtures/test.png', import.meta.url));
 	const dest = path.join(temporary, 'test.png');
 	const args = [
 		src,
 		dest,
 		'-s4',
 		'-c6',
-		'-y'
+		'-y',
 	];
 
 	await execa(pngout, args);
